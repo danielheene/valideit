@@ -1,0 +1,44 @@
+{
+  "name": "valideit",
+  "version": "0.0.1",
+  "description": "validate all engine versions from package.json",
+  "main": "valideit.js",
+  "bin": "./bin/valideit.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint ./*.js ./**/*.js !./node_modules/**/*.js",
+    "deploy": "publish"
+  },
+  "dependencies": {
+    "find-root": "^1.1.0",
+    "lodash": "^4.17.4",
+    "semver": "^5.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "publish": "^0.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielheene/valideit.git"
+  },
+  "keywords": [
+    "valideit",
+    "validate",
+    "validation",
+    "approve",
+    "semver",
+    "versions",
+    "engines"
+  ],
+  "author": "Daniel Heene <hi@danielheene.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielheene/valideit/issues"
+  },
+  "homepage": "https://github.com/danielheene/valideit#readme"
+}
