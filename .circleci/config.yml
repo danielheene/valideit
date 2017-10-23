@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.7.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Installing Packages
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Linting Javascript files
+          command: npm run lint
+      - deploy:
+          name: Deploying to NPM
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc && npm run deploy
+            else
+              echo "not master branch so not deploying"
+            fi
