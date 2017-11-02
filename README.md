@@ -1,6 +1,10 @@
 # valideit
 __validate__ /ˈvalɪdeɪt/
 
+[![CircleCI](https://circleci.com/gh/danielheene/valideit/tree/master.svg?style=shield)](https://circleci.com/gh/danielheene/valideit/tree/master)
+[![GitHub issues](https://img.shields.io/github/issues/danielheene/valideit.svg)](https://github.com/danielheene/valideit/issues)
+[![GitHub license](https://img.shields.io/github/license/danielheene/valideit.svg)](https://github.com/danielheene/valideit/blob/master/LICENSE)
+
 This package can be used to validate if all defined engine versions in the package.json file are matched.
 
 ## How to use
@@ -26,6 +30,7 @@ project and use its functionality inside your code like the
 following example is showing.
 ```javascript
 const valideit = require('valideit');
+
 valideit.validate();
 ```
 
@@ -36,3 +41,26 @@ as described in the following example.
 $ npm install -g valideit 
 $ valideit
 ```
+
+## Options
+#### CLI arguments
+The following arguments can be passed via CLI or also to the preinstall hook.
+```
+  --path, -p     file to check engines from                             [string]
+  --warn, -w     doesn't abort on error                                [boolean]
+```
+
+#### Function call
+You can also pass those arguments as a Javascript object to the function call.
+```javascript
+const valideit = require('valideit');
+
+valideit.validate({
+  level: 'warn',
+  path: '/path/to/package.json'
+});
+```
+
+----
+## License
+[MIT](LICENSE)

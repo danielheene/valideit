@@ -1,3 +1,8 @@
 .circleci/
+.DS_Store
+.editorconfig
 .eslintrc
 .gitignore
+.idea/
+lib/*.test.js
+.nvmrc
