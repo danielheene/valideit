@@ -22,11 +22,3 @@ jobs:
       - run:
           name: Testing Javascript files
           command: npm run mocha
-      - deploy:
-          name: Deploying to NPM if branch is master
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc && npm run publish
-            else
-              echo "not master branch so not deploying"
-            fi
