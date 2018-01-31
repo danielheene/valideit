@@ -11,7 +11,8 @@
     "publish": "./node_modules/.bin/publish"
   },
   "engines": {
-    "node": ">=8.7.0"
+    "node": ">=8.7.0",
+    "npm": ">=5.2.0"
   },
   "dependencies": {
     "find-root": "^1.1.0",
@@ -41,10 +42,11 @@
     "valideit",
     "validate",
     "validation",
-    "approve",
     "semver",
     "versions",
-    "engines"
+    "engines",
+    "script",
+    "shell"
   ],
   "author": "Daniel Heene <hi@danielheene.de>",
   "license": "MIT",
