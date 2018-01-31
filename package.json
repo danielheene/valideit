@@ -42,10 +42,11 @@
     "valideit",
     "validate",
     "validation",
-    "approve",
     "semver",
     "versions",
-    "engines"
+    "engines",
+    "script",
+    "shell"
   ],
   "author": "Daniel Heene <hi@danielheene.de>",
   "license": "MIT",
