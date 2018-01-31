@@ -10,15 +10,18 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
       - run:
-          name: Installing Packages
+          name: installing packages
           command: npm install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
-          name: Linting Javascript files
+          name: linting javascript files
           command: npm run eslint
       - run:
-          name: Testing Javascript files
+          name: testing javascript files
           command: npm run mocha
+      - run:
+          name: uploading coverage reports
+          command: npm run codecov

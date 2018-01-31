@@ -5,9 +5,10 @@
   "main": "valideit.js",
   "bin": "./bin/valideit.js",
   "scripts": {
+    "codecov": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov",
     "test": "npm run eslint && npm run mocha",
-    "mocha": "./node_modules/.bin/mocha ./lib/*.test.js",
-    "eslint": "./node_modules/.bin/eslint ./*.js ./**/*.js !./node_modules/**/*.js",
+    "mocha": "nyc --reporter=html --reporter=text ./node_modules/.bin/mocha ./lib/*.test.js",
+    "eslint": "./node_modules/.bin/eslint ./valideit.js ./bin/**/*.js ./lib/**/*.js",
     "publish": "./node_modules/.bin/publish"
   },
   "engines": {
@@ -17,12 +18,12 @@
   "dependencies": {
     "find-root": "^1.1.0",
     "lodash": "^4.17.4",
-    "npm": "^5.5.1",
     "semver": "^5.4.1",
     "shelljs": "^0.7.8",
     "yargs": "^10.0.3"
   },
   "devDependencies": {
+    "codecov": "^3.0.0",
     "eslint": "^4.10.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.8.0",
@@ -30,6 +31,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^4.0.1",
+    "nyc": "^11.4.1",
     "publish": "^0.6.0",
     "rimraf": "^2.6.2",
     "write-json": "^2.0.0"
