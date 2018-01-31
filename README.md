@@ -2,6 +2,7 @@
 __validate__ /ˈvalɪdeɪt/
 
 [![CircleCI](https://circleci.com/gh/danielheene/valideit/tree/master.svg?style=shield)](https://circleci.com/gh/danielheene/valideit/tree/master)
+[![codecov](https://codecov.io/gh/danielheene/valideit/branch/master/graph/badge.svg)](https://codecov.io/gh/danielheene/valideit)
 [![GitHub issues](https://img.shields.io/github/issues/danielheene/valideit.svg)](https://github.com/danielheene/valideit/issues)
 [![GitHub license](https://img.shields.io/github/license/danielheene/valideit.svg)](https://github.com/danielheene/valideit/blob/master/LICENSE)
 
