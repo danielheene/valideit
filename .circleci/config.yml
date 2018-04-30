@@ -8,14 +8,14 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - deps-{{ checksum "package.json" }}
       - run:
           name: installing packages
           command: npm install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: deps-{{ checksum "package.json" }}
       - run:
           name: linting javascript files
           command: npm run eslint
