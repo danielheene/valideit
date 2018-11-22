@@ -1,6 +1,6 @@
 {
   "name": "valideit",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "validate all engine versions from package.json",
   "main": "valideit.js",
   "bin": "./bin/valideit.js",
@@ -17,21 +17,21 @@
   },
   "dependencies": {
     "find-root": "^1.1.0",
-    "lodash": "^4.17.10",
-    "semver": "^5.5.0",
-    "shelljs": "^0.8.1",
-    "yargs": "^11.0.0"
+    "lodash": "^4.17.11",
+    "semver": "^5.6.0",
+    "shelljs": "^0.8.3",
+    "yargs": "^11.1.0"
   },
   "devDependencies": {
-    "codecov": "^3.0.1",
+    "codecov": "^3.1.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
-    "mocha": "^5.1.1",
-    "nyc": "^11.7.1",
+    "mocha": "^5.2.0",
+    "nyc": "^11.9.0",
     "publish": "^0.6.0",
     "rimraf": "^2.6.2",
     "write-json": "^3.0.1"
