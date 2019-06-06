@@ -21,7 +21,7 @@ describe('loadEnginesFromFile()', () => {
 
   it(`whithout parameter should load local package file`, () => {
     const loadedEngines = loadEnginesFromFile().engines
-    const packageEngines = require('../package.json').engines
+    const packageEngines = require('../../package.json').engines
 
     assert.deepEqual(loadedEngines, packageEngines)
   })

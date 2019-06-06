@@ -5,9 +5,9 @@ const _ = require('lodash')
 const { satisfies } = require('semver')
 
 function validate (userConfig) {
-  const buildRuntimeConfig = require('./lib/buildRuntimeConfig')
-  const fetchEngineVersion = require('./lib/fetchEngineVersion')
-  const loadEnginesFromFile = require('./lib/loadEnginesFromFile')
+  const buildRuntimeConfig = require('./src/lib/buildRuntimeConfig')
+  const fetchEngineVersion = require('./src/lib/fetchEngineVersion')
+  const loadEnginesFromFile = require('./src/lib/loadEnginesFromFile')
 
   const config = buildRuntimeConfig(userConfig)
   const validatedEngines = []

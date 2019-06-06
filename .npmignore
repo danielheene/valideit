@@ -4,5 +4,6 @@
 .eslintrc
 .gitignore
 .idea/
-lib/*.test.js
+rollup.config.js
+src/lib/*.test.js
 .nvmrc

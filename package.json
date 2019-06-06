@@ -1,28 +1,60 @@
 {
   "name": "valideit",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "validate all engine versions from package.json",
-  "main": "valideit.js",
-  "bin": "./bin/valideit.js",
-  "scripts": {
-    "codecov": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov",
-    "test": "npm run eslint && npm run mocha",
-    "mocha": "nyc --reporter=html --reporter=text ./node_modules/.bin/mocha ./lib/*.test.js",
-    "eslint": "./node_modules/.bin/eslint ./valideit.js ./bin/**/*.js ./lib/**/*.js",
-    "publish": "./node_modules/.bin/publish"
+  "keywords": [
+    "dependencies",
+    "engines",
+    "script",
+    "semver",
+    "shell",
+    "validate",
+    "validation",
+    "valideit",
+    "versioning",
+    "versions"
+  ],
+  "homepage": "https://github.com/danielheene/valideit",
+  "bugs": {
+    "url": "https://github.com/danielheene/valideit/issues"
   },
-  "engines": {
-    "node": ">=8.7.0",
-    "npm": ">=5.2.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielheene/valideit.git"
+  },
+  "license": "MIT",
+  "author": "Daniel Heene <hi@danielheene.de>",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "codecov": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov",
+    "eslint": "./node_modules/.bin/eslint ./valideit.js ./bin/**/*.js ./lib/**/*.js",
+    "mocha": "nyc --reporter=html --reporter=text ./node_modules/.bin/mocha ./lib/*.test.js",
+    "start": "rollup -c -w",
+    "test": "npm run eslint && npm run mocha"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "package.json": [
+      "sort-package-json",
+      "git add"
+    ]
   },
   "dependencies": {
+    "execa": "^1.0.0",
     "find-root": "^1.1.0",
-    "lodash": "^4.17.10",
-    "semver": "^5.5.0",
-    "shelljs": "^0.8.1",
+    "lodash": "^4.17.11",
+    "semver": "^6.1.1",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
+    "@types/execa": "^0.9.0",
+    "@types/semver": "^6.0.0",
+    "@types/yargs": "^13.0.0",
     "codecov": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
@@ -30,30 +62,21 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
-    "mocha": "^5.1.1",
-    "nyc": "^11.7.1",
-    "publish": "^0.6.0",
+    "husky": "^2.4.0",
+    "lint-staged": "^8.2.0",
     "rimraf": "^2.6.2",
+    "rollup": "^1.14.2",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "sort-package-json": "^1.22.1",
+    "tslib": "^1.9.3",
+    "typescript": "^3.5.1",
     "write-json": "^3.0.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/danielheene/valideit.git"
-  },
-  "keywords": [
-    "valideit",
-    "validate",
-    "validation",
-    "semver",
-    "versions",
-    "engines",
-    "script",
-    "shell"
-  ],
-  "author": "Daniel Heene <hi@danielheene.de>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/danielheene/valideit/issues"
-  },
-  "homepage": "https://github.com/danielheene/valideit"
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  }
 }
