@@ -10,20 +10,20 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
-      sourcemap: true
+      sourcemap: false
     }
   ],
   external: [
+    'child_process',
+    'find-root',
     'fs',
     'path',
-    'lodash',
-    'shelljs',
     'semver'
   ],
   plugins: [
     external(),
     typescript({
-      lib: ['es5', 'es6', 'dom'],
+      lib: ['es5', 'es6'],
       strict: true,
       target: 'es5'
     }),

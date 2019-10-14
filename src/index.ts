@@ -1,33 +1,87 @@
-import { SemVer } from "semver";
+import chalk from 'chalk';
+import { execSync } from 'child_process';
+import { Stats } from 'fs';
+import { resolve } from 'path'
+import * as semver from 'semver';
+import * as findRoot from 'find-root';
 
-const semver = require('semver');
+const cmd = execSync('mysql --version').toString();
+console.log(cmd.toString());
 
-type Engine = {
-  name: string,
-  currentVersion: string,
-  requiredVersion: string,
-  semver: SemVer,
-  satisfies: boolean,
+declare namespace Valideit {
+  export type Engine = {
+    name: string,
+    currentVersion: string,
+    requiredVersion: string,
+    semver: semver.SemVer,
+    satisfies: boolean,
+  }
+
+  export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
+
+  export interface Config {
+    failOnError: boolean,
+    logLevel: LogLevel,
+    path?: string,
+  }
 }
 
 class Valideit {
-  constructor(userConfig?: Object) {
+  constructor(userConfiguration?: Valideit.Config) {
 
+    this.loadInstanceConfiguration(userConfiguration);
   }
 
-  engines: Engine[];
+  config: Valideit.Config;
+  engines: Valideit.Engine[];
 
   private getInstalledVersion() {
 
   }
-}
- // new Valideit();
 
-console.log(semver.coerce('GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin18)'));
-console.log(semver.coerce('v8.16.0'));
-console.log(semver.coerce('mysql  Ver 8.0.15 for macos10.14 on x86_64 (MySQL Community Server - GPL)\n'));
-console.log(semver.coerce('1.16.0'));
-console.log(semver.coerce('rsync  version 2.6.9  protocol version 29\n'))
+  private printLog(message: string, level: Valideit.LogLevel): void {
+    const isLogLevelDebug = this.config.logLevel === 'debug' && level === 'debug';
+    const isLogLevelWarn = this.config.logLevel === 'debug' && level === 'debug';
+
+    if (isLogLevelDebug) {
+      process.stdout.write(`${chalk.green('[debug]')} ${message}\n`);
+    }
+  }
+
+  private loadInstanceConfiguration(userConfiguration?: Valideit.Config): void {
+    const failOnError = true;
+    const logLevel = 'warn';
+    const path = '';
+
+    const defaultConfiguration = Object.freeze({
+      failOnError,
+      logLevel,
+      path,
+    });
+
+    this.config = Object.assign({}, defaultConfiguration, userConfiguration)
+
+    this.printLog('instance configuration loaded', 'debug');
+  }
+
+  private getEngineVersionOutput(engineName: string): string {
+    return execSync(`${engineName} --version`).toString();
+  }
+}
+
+new Valideit({
+  failOnError: false,
+  logLevel: 'debug' as Valideit.LogLevel,
+  path: 'test.j/sjjss',
+});
+
+
+//
+// console.log(SemVer.coerce('GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin18)'));
+// console.log(SemVer.coerce('v8.16.0'));
+// console.log(SemVer.coerce('mysql  Ver 8.0.15 for macos10.14 on x86_64 (MySQL Community Server - GPL)\n'));
+// console.log(SemVer.coerce('1.16.0'));
+// console.log(SemVer.coerce('rsync  version 2.6.9  protocol version 29\n'))
 //
 // function validate(userConfig) {
 //   const buildRuntimeConfig = require('./lib/buildRuntimeConfig')

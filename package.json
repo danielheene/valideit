@@ -1,9 +1,11 @@
 {
   "name": "valideit",
   "version": "2.0.0",
-  "description": "validate all engine versions from package.json",
+  "description": "validate further engine versions in your package.json",
   "keywords": [
+    "cli",
     "dependencies",
+    "engine",
     "engines",
     "script",
     "semver",
@@ -11,6 +13,7 @@
     "validate",
     "validation",
     "valideit",
+    "version",
     "versioning",
     "versions"
   ],
@@ -45,14 +48,12 @@
     ]
   },
   "dependencies": {
-    "execa": "^1.0.0",
+    "chalk": "^2.4.2",
     "find-root": "^1.1.0",
-    "lodash": "^4.17.11",
     "semver": "^6.1.1",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "@types/execa": "^0.9.0",
     "@types/semver": "^6.0.0",
     "@types/yargs": "^13.0.0",
     "codecov": "^3.0.1",
